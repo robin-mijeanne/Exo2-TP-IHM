@@ -42,5 +42,6 @@ public class MainActivity extends AppCompatActivity {
         cases.add(new Case(R.drawable.mlp, "M.L.P", "BrownieLand"));
 
         return cases;
+        
     }
 }

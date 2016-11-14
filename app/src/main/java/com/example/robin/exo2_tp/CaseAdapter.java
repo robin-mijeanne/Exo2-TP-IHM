@@ -18,8 +18,8 @@ import java.util.List;
 public class CaseAdapter extends ArrayAdapter<Case> {
 
     //tweets est la liste des models à afficher
-    public CaseAdapter(Context context, List<Case> tweets) {
-        super(context, 0, tweets);
+    public CaseAdapter(Context context, List<Case> mesCases) {
+        super(context, 0, mesCases);
     }
 
     @Override
@@ -29,29 +29,23 @@ public class CaseAdapter extends ArrayAdapter<Case> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.layoutperso,parent, false);
         }
 
-        TweetViewHolder viewHolder = (TweetViewHolder) convertView.getTag();
+        CaseViewHolder viewHolder = (CaseViewHolder) convertView.getTag();
         if(viewHolder == null){
-            viewHolder = new TweetViewHolder();
-            viewHolder.pseudo = (TextView) convertView.findViewById(R.id.pseudo);
+            viewHolder = new CaseViewHolder();
+            viewHolder.nom = (TextView) convertView.findViewById(R.id.nom);
             viewHolder.text = (TextView) convertView.findViewById(R.id.text);
-            viewHolder.avatar = (ImageView) convertView.findViewById(R.id.avatar);
+            viewHolder.img = (ImageView) convertView.findViewById(R.id.img);
             convertView.setTag(viewHolder);
         }
 
         //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
-        Case tweet = getItem(position);
+        Case maCase = getItem(position);
 
         //il ne reste plus qu'à remplir notre vue
-        viewHolder.pseudo.setText(tweet.getPseudo());
-        viewHolder.text.setText(tweet.getText());
-        viewHolder.avatar.setImageDrawable(new ColorDrawable(tweet.getColor()));
+        viewHolder.nom.setText(maCase.getNom());
+        viewHolder.text.setText(maCase.getText());
+        viewHolder.img.setImageResource(maCase.getImage());
 
         return convertView;
-    }
-
-    private class TweetViewHolder{
-        public TextView pseudo;
-        public TextView text;
-        public ImageView avatar;
     }
 }

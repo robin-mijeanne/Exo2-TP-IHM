@@ -5,34 +5,34 @@ package com.example.robin.exo2_tp;
  */
 
 public class Case {
-    private int color;
-    private String pseudo;
+    private int image;
+    private String nom;
     private String text;
 
-    public Case(int color, String pseudo, String text) {
-        this.color = color;
-        this.pseudo = pseudo;
+    public Case(int image, String nom, String text) {
+        this.image = image;
+        this.nom = nom;
         this.text = text;
     }
 
-    public int getColor() {
-        return color;
+    public int getImage() {
+        return image;
     }
 
-    public String getPseudo() {
-        return pseudo;
+    public String getNom() {
+        return nom;
     }
 
     public String getText() {
         return text;
     }
 
-    public void setColor(int color) {
-        this.color = color;
+    public void setImage(int color) {
+        this.image = image;
     }
 
-    public void setPseudo(String pseudo) {
-        this.pseudo = pseudo;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public void setText(String text) {

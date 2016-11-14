@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class CaseViewHolder {
-    public TextView pseudo;
+    public TextView nom;
     public TextView text;
-    public ImageView avatar;
+    public ImageView img;
 }

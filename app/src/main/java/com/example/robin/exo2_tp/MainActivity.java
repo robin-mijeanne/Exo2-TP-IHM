@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnCaseClickListener{
 
     ListView myListView;
 
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         myListView= (ListView) findViewById(R.id.list);
         List<Case> mesCases= genererCases();
-        CaseAdapter adapter= new CaseAdapter(MainActivity.this, mesCases);
+        CaseAdapter adapter= new CaseAdapter(MainActivity.this, mesCases, this);
         myListView.setAdapter(adapter);
 
     }
@@ -42,5 +42,10 @@ public class MainActivity extends AppCompatActivity {
         cases.add(new Case(R.drawable.mlp, "M.L.P", "BrownieLand"));
 
         return cases;
+    }
+
+    @Override
+    public void onCaseClick(Case ma_case) {
+        startActivity(DetailActivity.newIntent(ma_case, this));
     }
 }

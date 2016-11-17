@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Exo2-TP</string>
+    <string name="title_activity_detail">Detail</string>
 </resources>

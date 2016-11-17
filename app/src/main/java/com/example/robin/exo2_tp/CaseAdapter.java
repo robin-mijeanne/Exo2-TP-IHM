@@ -17,9 +17,12 @@ import java.util.List;
 
 public class CaseAdapter extends ArrayAdapter<Case> {
 
-    //tweets est la liste des models à afficher
-    public CaseAdapter(Context context, List<Case> mesCases) {
+    private OnCaseClickListener listener;
+
+    public CaseAdapter(Context context, List<Case> mesCases, OnCaseClickListener listener)
+    {
         super(context, 0, mesCases);
+        this.listener= listener;
     }
 
     @Override
@@ -35,16 +38,24 @@ public class CaseAdapter extends ArrayAdapter<Case> {
             viewHolder.nom = (TextView) convertView.findViewById(R.id.nom);
             viewHolder.text = (TextView) convertView.findViewById(R.id.text);
             viewHolder.img = (ImageView) convertView.findViewById(R.id.img);
+            viewHolder.layoutperso = convertView.findViewById(R.id.layoutperso);
             convertView.setTag(viewHolder);
         }
 
         //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
-        Case maCase = getItem(position);
+        final Case maCase = getItem(position);
 
         //il ne reste plus qu'à remplir notre vue
         viewHolder.nom.setText(maCase.getNom());
         viewHolder.text.setText(maCase.getText());
         viewHolder.img.setImageResource(maCase.getImage());
+
+        viewHolder.layoutperso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onCaseClick(maCase);
+            }
+        });
 
         return convertView;
     }
